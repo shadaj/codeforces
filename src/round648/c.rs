@@ -46,7 +46,10 @@ fn main() {
             index_diff += num_count as i32;
         }
 
-        b_offsets_histogram.insert(index_diff, b_offsets_histogram.get(&index_diff).unwrap_or(&0) + 1);
+        b_offsets_histogram.insert(
+            index_diff,
+            b_offsets_histogram.get(&index_diff).unwrap_or(&0) + 1,
+        );
     }
 
     let mut best_count = 0;

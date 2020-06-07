@@ -36,45 +36,44 @@ fn main() {
         let columns = input.next();
         let mut matrix: Vec<Vec<bool>> = Vec::new();
         for _ in 0..rows {
-          let mut cur_row = Vec::new();
-          for _ in 0..columns {
-            cur_row.push(input.next::<i8>() == 1);
-          }
+            let mut cur_row = Vec::new();
+            for _ in 0..columns {
+                cur_row.push(input.next::<i8>() == 1);
+            }
 
-          matrix.push(cur_row);
+            matrix.push(cur_row);
         }
 
         let mut count_open_cols = 0;
         for c in 0..columns {
-          if (0..rows).all(|r| matrix[r][c] == false) {
-            count_open_cols += 1;
-          }
+            if (0..rows).all(|r| matrix[r][c] == false) {
+                count_open_cols += 1;
+            }
         }
 
         let mut count_open_rows = 0;
         for r in 0..rows {
-          if (0..columns).all(|c| matrix[r][c] == false) {
-            count_open_rows += 1;
-          }
+            if (0..columns).all(|c| matrix[r][c] == false) {
+                count_open_rows += 1;
+            }
         }
 
-        
         let mut cur_ashish = true;
         loop {
-          if count_open_cols == 0 || count_open_rows == 0 {
-            if cur_ashish {
-              writeln!(out, "Vivek").unwrap();
+            if count_open_cols == 0 || count_open_rows == 0 {
+                if cur_ashish {
+                    writeln!(out, "Vivek").unwrap();
+                } else {
+                    writeln!(out, "Ashish").unwrap();
+                }
+
+                break;
             } else {
-              writeln!(out, "Ashish").unwrap();
+                count_open_cols -= 1;
+                count_open_rows -= 1;
             }
 
-            break;
-          } else {
-            count_open_cols -= 1;
-            count_open_rows -= 1;
-          }
-
-          cur_ashish = !cur_ashish;
+            cur_ashish = !cur_ashish;
         }
     }
 }

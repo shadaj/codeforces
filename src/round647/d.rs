@@ -41,7 +41,7 @@ fn main() {
     for _ in 0..references {
         let first: u32 = input.next();
         let second: u32 = input.next();
-        
+
         if !adjacency.contains_key(&first) {
             adjacency.insert(first, Vec::new());
         }
@@ -69,26 +69,34 @@ fn main() {
 
     let mut node_to_min_topic_option = HashMap::<u32, u32>::new();
     let mut nodes_order = Vec::new();
-    
-    let check_all = (1..(nodes + 1)).all(|topic| {
-        topic_to_nodes.get(&topic).unwrap_or(&empty_vec).iter().all(|node| {
-            nodes_order.push(node);
-            if *node_to_min_topic_option.get(node).unwrap_or(&1) == topic {
-                adjacency.get(node).unwrap_or(&Vec::new()).iter().all(|neighbor| {
-                    if *node_to_topic.get(neighbor).unwrap() != topic {
-                        if *node_to_min_topic_option.get(neighbor).unwrap_or(&1) == topic {
-                            node_to_min_topic_option.insert(*neighbor, topic + 1);
-                        }
 
-                        true
-                    } else {
-                        false
-                    }
-                })
-            } else {
-                false
-            }
-        })
+    let check_all = (1..(nodes + 1)).all(|topic| {
+        topic_to_nodes
+            .get(&topic)
+            .unwrap_or(&empty_vec)
+            .iter()
+            .all(|node| {
+                nodes_order.push(node);
+                if *node_to_min_topic_option.get(node).unwrap_or(&1) == topic {
+                    adjacency
+                        .get(node)
+                        .unwrap_or(&Vec::new())
+                        .iter()
+                        .all(|neighbor| {
+                            if *node_to_topic.get(neighbor).unwrap() != topic {
+                                if *node_to_min_topic_option.get(neighbor).unwrap_or(&1) == topic {
+                                    node_to_min_topic_option.insert(*neighbor, topic + 1);
+                                }
+
+                                true
+                            } else {
+                                false
+                            }
+                        })
+                } else {
+                    false
+                }
+            })
     });
 
     if check_all {

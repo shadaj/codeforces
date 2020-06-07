@@ -33,7 +33,7 @@ enum MatrixElem {
     Empty,
     Good,
     Bad,
-    Wall
+    Wall,
 }
 
 fn main() {
@@ -47,7 +47,7 @@ fn main() {
         let mut grid = Vec::new();
         let mut grid_blocked = Vec::new();
         let mut reachable = Vec::new();
-        
+
         let mut count_good = 0;
         for _ in 0..rows {
             let mut cur_row = Vec::new();
@@ -80,8 +80,11 @@ fn main() {
 
         for r in 0..rows {
             for c in 0..columns {
-                if (r > 0 && grid[r - 1][c] == MatrixElem::Bad) || (r < (rows - 1) && grid[r + 1][c] == MatrixElem::Bad) ||
-                   (c > 0 && grid[r][c - 1] == MatrixElem::Bad) || (c < (columns - 1) && grid[r][c + 1] == MatrixElem::Bad) {
+                if (r > 0 && grid[r - 1][c] == MatrixElem::Bad)
+                    || (r < (rows - 1) && grid[r + 1][c] == MatrixElem::Bad)
+                    || (c > 0 && grid[r][c - 1] == MatrixElem::Bad)
+                    || (c < (columns - 1) && grid[r][c + 1] == MatrixElem::Bad)
+                {
                     grid_blocked[r][c] = true;
                 }
             }
@@ -105,11 +108,11 @@ fn main() {
                     if r > 0 {
                         work_queue.push_back((r - 1, c));
                     }
-    
+
                     if r < rows - 1 {
                         work_queue.push_back((r + 1, c));
                     }
-    
+
                     if c > 0 {
                         work_queue.push_back((r, c - 1));
                     }

@@ -33,7 +33,7 @@ fn main() {
     let out = &mut BufWriter::new(stdout());
 
     let elems = input.next();
-    
+
     let mut nums_with_index: Vec<HashSet<usize>> = Vec::new();
     // let mut nums: Vec<u64> = Vec::new();
     for i in 0..elems {
@@ -52,7 +52,7 @@ fn main() {
                 if cur_num & 1 == 1 {
                     nums_with_index[cur_index].insert(i);
                 }
-                
+
                 cur_num = cur_num >> 1;
                 cur_index += 1;
             } else {
