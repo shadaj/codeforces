@@ -1,0 +1,39 @@
+[package]
+name = "codeforces-rs"
+version = "0.1.0"
+authors = ["Shadaj Laddad <shadaj@users.noreply.github.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "round647_a"
+path = "src/round647/a.rs"
+
+[[bin]]
+name = "round647_b"
+path = "src/round647/b.rs"
+
+[[bin]]
+name = "round647_d"
+path = "src/round647/d.rs"
+
+[[bin]]
+name = "round648_a"
+path = "src/round648/a.rs"
+
+[[bin]]
+name = "round648_b"
+path = "src/round648/b.rs"
+
+[[bin]]
+name = "round648_c"
+path = "src/round648/c.rs"
+
+[[bin]]
+name = "round648_d"
+path = "src/round648/d.rs"
+
+[[bin]]
+name = "round648_e"
+path = "src/round648/e.rs"
